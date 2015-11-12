@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Nurse Task Manager Homepage</title>
+		<link rel="stylesheet" href="css/style1.css"/>
+		<link rel="stylesheet" href="css/style-xlarge.css" />
+		<script src="js/jquery-1.11.3.min.js"></script>
+		<script src="js/jquery-2.1.3.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#lognurse').click(function(){
+				$('#overlay').fadeIn('slow');
+				$('#overlay_div').fadeIn('slow');
+			});
+		});
+		$(document).ready(function(){
+			$('#logadmin').click(function(){
+				$('#overlay1').fadeIn('slow');
+				$('#overlay_div1').fadeIn('slow');
+			});
+		});
+		$(document).ready(function(){
+			$('.close-button').click(function(){
+				$('#overlay').fadeOut('fast');
+				$('#overlay_div').fadeOut('fast');
+			});
+		});
+		$(document).ready(function(){
+			$('.close-button').click(function(){
+				$('#overlay1').fadeOut('fast');
+				$('#overlay_div1').fadeOut('fast');
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<!-- Header -->
+			<header id="header">
+				<h1><a href="index.html">Ghana Health Services</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="AboutUs.html">About Us</a></li>
+						<li><a href="elements.html">Contact</a></li>
+						<li><a href="#" class="button special">Sign Up</a></li>
+                </nav>
+		<!-- Banner -->
+			
+				<section id="banner">
+				<h2 style="color:#3cadd4">Nurses Task Manager</h2>
+				<p>Efficient, Quick and Reliable way to manage nurses' activities</p>
+				<ul class="actions">
+					<li>
+						<a href="#" class="button big" id="logadmin">Sign In As Administrator</a>
+					</li>
+					<li>
+						<a href="#" class="button big" id="lognurse">Sign In As Nurse</a>
+					</li>
+				</ul>
+			    </section>
+					</ul>
+				
+			</header>
+			<div id="overlay"></div>
+			<div id="overlay_div">
+				<div class="close-button">X</div>
+				<table align="center" id="nurse_login">
+                    <tr>
+                        <td>Nurse name:</td><td><input type="text" name="user" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td><td><input type="password" name="pass" required></td>
+                    </tr>
+                    <tr class="login-button">
+                        <!-- <td colspan="2"></td> --><td><input type="submit"></td>
+                    </tr>
+                </table>
+			</div>
+			<div id="overlay1"></div>
+			<div id="overlay_div1">
+				<div class="close-button">X</div>
+				<table align="center" id="admin_login">
+                    <tr>
+                        <td>Admin name:</td><td><input type="text" name="user" required></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td><td><input type="password" name="pass" required></td>
+                    </tr>
+                    <tr class="login-button">
+                        <!-- <td colspan="2"></td> --><td><input type="submit"></td>
+                    </tr>
+                </table>
+			</div>
+	</body>
+</html>
