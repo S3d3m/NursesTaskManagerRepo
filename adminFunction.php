@@ -51,7 +51,7 @@
 						<!-- <li><a href="#" class="button special">Sign Up</a></li> -->
                 </nav>
 		<!-- Banner -->
-			
+
 				<section id="banner">
 				<h2 style="color:#3cadd4">Nurses Task Manager</h2>
 				<p>Efficient, Quick and Reliable way to manage nurses' activities</p>
@@ -71,12 +71,12 @@
 				</ul>
 			    </section>
 					</ul>
-				
+
 			</header>
 			<div id="form_overlay"></div>
 			<div id="form_overlay_div">
 				<div class="close-button">X</div>
-				<form action= "adminFunction.html" method="GET">
+				<form action= "adminFunction.php" method="GET">
 			    <div>Tasks Name : <input type="text" name="tn"></div>
 				<div>Tasks Description :</div>
 				<div>
@@ -90,7 +90,7 @@
 			<?php
 			if(isset($_REQUEST['tn'])){
 				include("tasks.php");
-				//create object of manufacturers 
+				//create object of manufacturers
 				$obj=new Tasks();
 				$name=$_REQUEST['tn'];
 				$description=$_REQUEST['td'];
@@ -98,11 +98,11 @@
 				$e_date=$_REQUEST['ed'];
 				$location=$_REQUEST['location'];
 				if(!$obj->add_Task($name,$description,$s_date,$e_date,$location)){
-					echo "Error adding".mysql_error(); 
+					echo "Error adding".mysql_error();
 				}else{
 					echo "Adding $name, $description, $s_date, $e_date, $location";
-				}	
-			}			
+				}
+			}
 		?>
 			</div>
 	</body>

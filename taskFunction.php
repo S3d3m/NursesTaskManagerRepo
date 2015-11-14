@@ -19,18 +19,18 @@
 				$('#form_overlay_div').fadeOut('fast');
 			});
 		});
-		// $(document).ready(function(){
-		// 	$('#logadmin').click(function(){
-		// 		$('#overlay1').fadeIn('slow');
-		// 		$('#overlay_div1').fadeIn('slow');
-		// 	});
-		// });
-		// $(document).ready(function(){
-		// 	$('.close-button').click(function(){
-		// 		$('#overlay').fadeOut('fast');
-		// 		$('#overlay_div').fadeOut('fast');
-		// 	});
-		// });
+		$(document).ready(function(){
+			$('#view').click(function(){
+				$('#table_overlay').fadeIn('slow');
+				$('#table_overlay_div').fadeIn('slow');
+			});
+		});
+		$(document).ready(function(){
+			$('.close-button').click(function(){
+				$('#table_overlay').fadeOut('fast');
+				$('#table_overlay_div').fadeOut('fast');
+			});
+		});
 		// $(document).ready(function(){
 		// 	$('.close-button').click(function(){
 		// 		$('#overlay1').fadeOut('fast');
@@ -51,7 +51,7 @@
 						<!-- <li><a href="#" class="button special">Sign Up</a></li> -->
                 </nav>
 		<!-- Banner -->
-			
+
 				<section id="banner">
 				<h2 style="color:#3cadd4">Nurses Task Manager</h2>
 				<p>Efficient, Quick and Reliable way to manage nurses' activities</p>
@@ -60,23 +60,23 @@
 						<a href="#" class="button big" id="task">Add Task</a>
 					</li>
 					<li>
-						<a href="#" class="button big" id="nurse">Update Task</a>
+						<a href="#" class="button big" id="update">Update Task</a>
 					</li>
 					<li>
 						<a href="#" class="button big" id="admin">Delete Task</a>
 					</li>
 					<li>
-						<a href="#" class="button big" id="admin">View Tasks</a>
+						<a href="#" class="button big" id="view">View Task</a>
 					</li>
 				</ul>
 			    </section>
 					</ul>
-				
+
 			</header>
 			<div id="form_overlay"></div>
 			<div id="form_overlay_div">
 				<div class="close-button">X</div>
-				<form action= "adminFunction.html" method="GET">
+				<form action= "taskFunction.php" method="GET">
 			    <div>Tasks Name : <input type="text" name="tn"></div>
 				<div>Tasks Description :</div>
 				<div>
@@ -90,7 +90,7 @@
 			<?php
 			if(isset($_REQUEST['tn'])){
 				include("tasks.php");
-				//create object of manufacturers 
+				//create object of manufacturers
 				$obj=new Tasks();
 				$name=$_REQUEST['tn'];
 				$description=$_REQUEST['td'];
@@ -98,11 +98,41 @@
 				$e_date=$_REQUEST['ed'];
 				$location=$_REQUEST['location'];
 				if(!$obj->add_Task($name,$description,$s_date,$e_date,$location)){
-					echo "Error adding".mysql_error(); 
+					echo "Error adding".mysql_error();
 				}else{
 					echo "Adding $name, $description, $s_date, $e_date, $location";
-				}	
-			}			
+				}
+			}
+		?>
+			</div>
+			<div id="table_overlay"></div>
+			<div id="table_overlay_div">
+				<div class="close-button">X</div>
+		<?php
+
+			include("tasks.php");
+
+			$obj=new Tasks();
+			// 	if(!$obj->display_task()){
+			// 		echo " Error displaying".mysql_error();
+			// 	}
+			// 	else{
+			// 		echo " displaying";
+			// 	}
+			$obj->display_task();
+			if(!$row=$obj->fetch()){
+				echo"there are no tasks currently";
+			}
+			echo"<table border='2'>";
+            echo"<tr><td>TASK ID</td><td>TASK NAME</td><td>TASK DESCRIPTION</td><td>START DATE</td>
+                 <td>END DATE</td><td>LOCATION</td></tr>";
+            while($row) {
+                  echo "<tr><td>{$row["task_id"]}</td><td><a href=tasksdisplayselected.php?id=".$row["task_name"].">{$row["task_name"]}</td>";
+                  echo"<td>{$row["task_description"]}</td><td>{$row["start_date"]}</td>
+                  <td>{$row["end_date"]}</td><td>{$row["location"]}</td>";
+                  $row=$obj->fetch();
+            }
+            echo"</table>";
 		?>
 			</div>
 	</body>
