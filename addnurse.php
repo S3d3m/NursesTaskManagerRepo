@@ -5,7 +5,7 @@
         <h2>Add Nurse to the System</h2>
     </title>
 <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
-
+<!--css file-->
 <style type="text/css">
 body {
     background-color: #CCC;
@@ -35,11 +35,12 @@ div#fixedfooter {
 </style>
 </head>
 <body>
-
+<!--header-->
 <div id="fixedheader"> <center><h2>Register as a nurse</h2></center></div>
 
 <CENTER><h2>Register a new nurse</h2></CENTER>
 <center>
+<!--A form to take details of the nurse-->
     <form method="GET" action="addnurse.php">
     <label for="nurseid">Nurse Id</label><input type="text" id="nurseid" name="nurseid"><br>
     <label for="nursefname">Nurse First Name</label><input type="text" id="nursefname" name="nursefname"><br>
@@ -48,19 +49,22 @@ div#fixedfooter {
     <input type="submit" value="Register">
     </form>
     </center>
+    <!--footer-->
     <div id="fixedfooter"><center>A nurse was successfully added</center></div>
 
-
+<!--php code to connect to database-->
 <?php
 include ('adb.php');
 $myadb = new adb();
 if (isset($_REQUEST['nurseid'])) {
 
+//taking the data from the form
 $id =$_REQUEST['nurseid'];
 $firstname=$_REQUEST['nursefname'];
 $secondname=$_REQUEST['nursesname'];
 $contact=$_REQUEST['nursecontact'];
 echo($id);
+//Querry to add a nurse
 $str_query="INSERT INTO addnurse values('$id','$firstname','$secondname','$contact')";
 if($myadb->query($str_query)==true){
 
