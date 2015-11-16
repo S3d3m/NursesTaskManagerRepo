@@ -1,27 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        <h2>Add Nurse to the System</h2>
+    </title>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+
+<style type="text/css">
+body {
+    background-color: #CCC;
+    margin:80px 80px 100px 100px;
+}
+
+div#fixedheader {
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    background:#333;
+    padding:20px;
+    background-color:green;
+}
+div#fixedfooter {
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    
+    background:#333;
+    padding:8px;
+    background-color:green;
+}
+   
+</style>
+</head>
+<body>
+
+<div id="fixedheader"> <center><h2>Register as a nurse</h2></center></div>
+
+<CENTER><h2>Register a new nurse</h2></CENTER>
+<center>
+    <form method="GET" action="addnurse.php">
+    <label for="nurseid">Nurse Id</label><input type="text" id="nurseid" name="nurseid"><br>
+    <label for="nursefname">Nurse First Name</label><input type="text" id="nursefname" name="nursefname"><br>
+    <label for="nursesname">Nurse Second Name</label><input type="text" id="nursesname" name="nursesname"><br>
+    <label for="nursecontact"> Contact</label><input type="text" id="nursecontact" name="nursecontact"><br>
+    <input type="submit" value="Register">
+    </form>
+    </center>
+    <div id="fixedfooter"><center>A nurse was successfully added</center></div>
+
+
 <?php
 include ('adb.php');
 $myadb = new adb();
+if (isset($_REQUEST['nurseid'])) {
 
-if (isset($_POST['id'])) {
-	
-$id=$_POST['id'];
-$firstname=$_POST['firstname'];
-$secondname=$_POST['secondname'];
-$contact=$_POST['contact'];
-
-
-
-$str_query="Insert into nurse values('$id','$firstname','$secondname','$contact')";
+$id =$_REQUEST['nurseid'];
+$firstname=$_REQUEST['nursefname'];
+$secondname=$_REQUEST['nursesname'];
+$contact=$_REQUEST['nursecontact'];
+echo($id);
+$str_query="INSERT INTO addnurse values('$id','$firstname','$secondname','$contact')";
 if($myadb->query($str_query)==true){
+
     echo "succesfully inserted";
 }
 else{
     echo "nothing was inserted";
 }
-
 }
 
 
-
-
 ?>
+
+</body>
+</html>
+
+
+
+
+

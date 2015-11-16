@@ -4,10 +4,11 @@
 	<title>
 		<h2>Add Nurse to the System</h2>
 	</title>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	function addNurse(){
 	// $.support.cors=true;
-        var nurseid= $('#nurseid').val();
+        var nurseid=$('#nurseid').val();
 		var fname =$('#nursefname').val();
 		var sname =$('#nursesname').val();
 		var contact =$('#nursecontact').val();
@@ -18,10 +19,10 @@
 			}
 			else{
 				$.ajax({
-					type:"POST",
+					type:"GET",
 					url:"addnurse.php",
 					data:{
-						id:nurseid,firstname:fname,secondname:sname,thecontact:contact
+						id:nurseid,firstname:fname,secondname:sname,mycontact:contact
 					   },
 					    success: function(data,status,xhr){
 
@@ -86,7 +87,7 @@ div#fixedfooter {
 
 <CENTER><h2>Register a new nurse</h2></CENTER>
 <center>
-	<form method="POST" action="addnurse.php">
+	<form method="GET" action="addnurse.php">
 	<label for="nurseid">Nurse Id</label><input type="text" id="nurseid" name="nurseid"><br>
 	<label for="nursefname">Nurse First Name</label><input type="text" id="nursefname"><br>
 	<label for="nursesname">Nurse Second Name</label><input type="text" id="nursesname"><br>
