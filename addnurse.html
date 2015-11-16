@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		<h2>Add Nurse to the System</h2>
+	</title>
+<script type="text/javascript">
+	function addNurse(){
+	// $.support.cors=true;
+        var nurseid= $('#nurseid').val();
+		var fname =$('#nursefname').val();
+		var sname =$('#nursesname').val();
+		var contact =$('#nursecontact').val();
+		alert(nurseid);
+		if ((nurseid==' ')||(fname==' ')||(sname==' ')||(contact==' '))
+			{
+				alert("please fill all the fields");
+			}
+			else{
+				$.ajax({
+					type:"POST",
+					url:"addnurse.php",
+					data:{
+						id:nurseid,firstname:fname,secondname:sname,thecontact:contact
+					   },
+					    success: function(data,status,xhr){
+
+							alert (status);
+                            alert (data);
+							},
+					    error:function(){
+					    	alert('failure');
+					    }
+					   });
+			    }
+
+}
+</script>
+<style type="text/css">
+body {
+	background-color: #CCC;
+	margin:80px 80px 100px 100px;
+}
+
+div#fixedheader {
+	position:fixed;
+	top:0px;
+	left:0px;
+	width:100%;
+	background:#333;
+	padding:20px;
+	background-color:green;
+}
+div#fixedfooter {
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	
+	background:#333;
+	padding:8px;
+	background-color:green;
+}
+/*h2{
+	color: green;
+	background-color: green;
+}*/
+#nurseid{
+	color: blue;
+
+}
+#nursefname{
+
+}
+#nursesname{
+
+}
+#nursecontact{
+
+}
+	
+</style>
+</head>
+<body>
+<div id="fixedheader"> <center><h2>Register as a nurse</h2></center></div>
+
+<CENTER><h2>Register a new nurse</h2></CENTER>
+<center>
+	<form method="POST" action="addnurse.php">
+	<label for="nurseid">Nurse Id</label><input type="text" id="nurseid" name="nurseid"><br>
+	<label for="nursefname">Nurse First Name</label><input type="text" id="nursefname"><br>
+	<label for="nursesname">Nurse Second Name</label><input type="text" id="nursesname"><br>
+	<label for="nursecontact"> Contact</label><input type="text" id="nursecontact"><br>
+	<button id="nurseregister" onclick="addNurse">Register</button>
+	</form>
+	</center>
+	<div id="fixedfooter"><center>A nurse was successfully added</center></div>
+</body>
+</html>
