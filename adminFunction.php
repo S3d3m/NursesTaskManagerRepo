@@ -104,37 +104,7 @@
 			<div id="form_overlay"></div>
 			<div id="form_overlay_div">
 				<div class="close-button">X</div>
-<<<<<<< HEAD
-				<form action= "adminFunction.php" method="GET">
-			    <div>Tasks Name : <input type="text" name="tn"></div>
-				<div>Tasks Description :</div>
-				<div>
-					<textarea name="td" cols="30" rows="5"></textarea>
-				</div>
-                <div>Start Date : <input type="date" name="sd"></div>
-                <div>End Date : <input type="date" name="ed"></div>
-                <div>Location : <input type="text" name="location"></div>
-				<div><input type="submit" value="Add"></div>
-			</form>
-			<?php
-			if(isset($_REQUEST['tn'])){
-				include("tasks.php");
-				//create object of manufacturers
-				$obj=new Tasks();
-				$name=$_REQUEST['tn'];
-				$description=$_REQUEST['td'];
-				$s_date=$_REQUEST['sd'];
-				$e_date=$_REQUEST['ed'];
-				$location=$_REQUEST['location'];
-				if(!$obj->add_Task($name,$description,$s_date,$e_date,$location)){
-					echo "Error adding".mysql_error();
-				}else{
-					echo "Adding $name, $description, $s_date, $e_date, $location";
-				}
-			}
-		?>
-			</div>
-=======
+
 				<	<form method ="GET" action ="adminFunction.php">
 		<h3><i><b>Add a new Administrator</b></i></h3>
 <table>
