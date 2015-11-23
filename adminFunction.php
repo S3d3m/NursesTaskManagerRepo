@@ -148,39 +148,6 @@
 	}
 
 		}
-		?>
-			</div>
-			<div id="table_overlay"></div>
-			<div id="table_overlay_div">
-				<div class="close-button">X</div>
-				<?php
-include_once ("administrator.php");
-$obj = new administrator();
-	$obj->view_administrators();
-
-	if(!$row=$obj->fetch()){
-echo "There is no administrator now";
-	}
-
-	echo "<center><table border='1'>";
-	echo "<tr ><td>Employee_id</td><td>First Name</td><td>Last Name</td><td>Contact</td>
-	     </tr>";
-	while ($row) {
-		if ($i%2==0){
-	$style ="style='background-color: BurlyWood'";
-	}
-	else{
-		$style ="style='background-color:cornsilk'";
-	}
-	$i++;
-		echo "<tr><td>{$row['employee_id']}</td><td>{$row['first_name']}</td><td>{$row['last_name']}</td>";
-		echo "<td>{$row['Contact']}</td></tr>";
-		$row =$obj->fetch();
-	}
-	echo "</table></center>";
-
-?>
-			</div>
 >>>>>>> refs/remotes/origin/kpotosu
 	</body>
 </html>
